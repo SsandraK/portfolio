@@ -1,0 +1,48 @@
+---
+import '../styles/global.css';
+import '../assets/style.css';
+import Navbar from '../components/Navbar.astro';
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth animate-fade-in-up ">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="/src/assets/style.css" />
+
+
+		<title>Portfolio</title>
+	</head>
+	<body class="relative bg-[var(--bg-gradient)] text-[var(--text-color)] transition-all">
+
+		<div class="blurred-bg"></div>
+
+		<Navbar />
+		<script type="text/javascript"
+		src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+	
+	  
+		<script type="text/javascript">
+			fetch('/api/env')
+			  .then(response => response.json())
+			  .then(data => {
+				emailjs.init(data.VITE_EMAILJS_PUBLIC_KEY);
+			  })
+		  </script>
+		  
+		<main class="relative z-10 w-full min-h-screen">
+			<slot />
+		
+		</main>
+		<script src="../assets/index.js" is:inline></script>
+		<script src="../assets/sendEmail.js"></script>
+
+	</body>
+</html>
+
+
+	</body>
+</html>

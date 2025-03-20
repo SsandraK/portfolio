@@ -1,0 +1,159 @@
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  display: flex;
+  width: max-content;
+  animation: scroll 35s linear infinite;
+}
+
+.skill-modal {
+  background-image: linear-gradient(to bottom, #000, hsla(0,0%,0%,0.09));
+  border: 2px solid #ffffff26;
+  animation: fade-in 0.5s forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.2);
+  }
+
+  70% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+/*======== Project Cards =========*/
+.container {
+  transform: translateY(40px);
+  transition: transform ease-in-out 500ms;
+}
+
+.parent-container:hover .container {
+  transform: translateY(0);
+}
+
+.parent-container:hover .container .paragraph {
+  opacity: 1;
+  transition: opacity ease-in 300ms;
+}
+
+
+.dark .parent-container {
+  border-color: gray;
+}
+
+.dark .container h3 {
+  color: black;
+}
+
+.dark .container .paragraph {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+
+/*----HeroSection text-------*/
+
+
+@keyframes text-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-text-reveal {
+  animation: text-reveal 1.5s ease-out forwards;
+
+}
+
+
+.animate-gradient-shift {
+  animation: gradient-shift 8s ease-in-out infinite alternate;
+}
+
+
+@keyframes text-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-text-reveal {
+  animation: text-fade-in 1.8s ease-out forwards;
+  animation-delay: 1s;
+}
+
+
+@media (max-width: 768px) {
+  .animate-text-reveal {
+    font-size: 4xl;
+    animation-duration: 2.2s;
+  }
+  
+
+  /*About me images*/
+
+  @keyframes text-reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-text-reveal {
+    animation: text-reveal 1.5s ease-out forwards;
+  }
+  
+  /* Floating Animation */
+  @keyframes floaty {
+    0% { transform: translateY(-2px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(3px); }
+  }
+  
+  .float-animation {
+    animation: floaty 5s ease-in-out infinite;
+  }
+  
+  /* 📱 Mobile Optimizations */
+  @media (max-width: 768px) {
+    .animate-text-reveal {
+      font-size: 4xl;
+      animation-duration: 2.2s;
+    }
+  }
+  
+}

@@ -1,0 +1,33 @@
+---
+---
+
+<button id="theme-toggle" class="w-10 h-10 flex items-center justify-center border-2 border-gray-600 dark:border-white rounded-full shadow-lg transition-colors">
+
+  <svg id="sun-icon" class="w-6 h-6 text-gray-600 dark:hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="5"></circle>
+      <path d="M12 1v2m0 18v2m4.24-18.24l1.42 1.42M4.34 19.66l1.42-1.42M1 12h2m18 0h2m-18.24-4.24l1.42 1.42M19.66 4.34l-1.42 1.42"></path>
+  </svg>
+  
+
+  <svg id="moon-icon" class="w-6 h-6 text-white hidden dark:block" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+  </svg>
+</button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const themeToggle = document.getElementById("theme-toggle");
+        if (!themeToggle) return;
+
+        const root = document.documentElement;
+        const savedTheme = localStorage.getItem("theme") || "light";
+
+        root.setAttribute("data-theme", savedTheme);
+
+        themeToggle.addEventListener("click", () => {
+            const newTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            root.setAttribute("data-theme", newTheme);
+            localStorage.setItem("theme", newTheme);
+        });
+    });
+</script>

@@ -1,0 +1,86 @@
+---
+import { skills } from "../assets/data";
+import SkillCard from "./SkillCard.astro";
+import "../assets/style.css"; 
+---
+
+<!-- Skills Heading -->
+<div 
+id="skills"
+class="animate-fade-in-up w-[75%] mx-auto mt-40 mb-10">
+  <h2 class="cursor-pointer font-bold w-fit md:ml-5 text-6xl mx-auto text-gray-900 dark:text-white"
+    data-skill-h1>
+    Skills
+  </h2>
+</div>
+
+<!-- Scrolling -->
+<div class="overflow-hidden relative w-full" data-skill-wrapper>
+  <div class="flex gap-8 animate-scroll whitespace-nowrap">
+    {skills.concat(skills).map((skill) => (
+      <SkillCard text={skill.text} logo={skill.logo} />
+    ))}
+  </div>
+</div>
+
+<!-- Skills Modal -->
+<div class="w-screen h-screen animate-fade-in bg-black/70 fixed top-0 left-0 z-[100] justify-center items-center hidden"
+  data-skill-modal>
+  <div class="w-4/5 max-h-[70vh] overflow-y-auto flex flex-wrap justify-center items-center gap-x-5 gap-y-4 bg-orange-300 p-6 rounded-lg skill-modal"
+    data-skill-stop>
+    <div class="inline-block m-0">
+    {skills.map((skill) => (
+      <SkillCard text={skill.text} logo={skill.logo} />
+    ))}
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      const wrapper = document.querySelector('[data-skill-wrapper]');
+      const modal = document.querySelector('[data-skill-modal]');
+      const h1 = document.querySelector('[data-skill-h1]');
+      const stop = document.querySelector('[data-skill-stop]');
+
+      if (!wrapper || !modal || !h1 || !stop) {
+          console.error("element not found!");
+          return;
+      }
+
+      
+      h1.addEventListener('click', () => {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+      });
+
+ 
+      wrapper.addEventListener('click', () => {
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+      });
+
+
+      modal.addEventListener('click', (e) => {
+        if (!stop.contains(e.target as Node)) {
+              modal.classList.remove('flex');
+              modal.classList.add('hidden');
+          }
+      });
+
+ 
+      stop.addEventListener('click', (e) => {
+          e.stopPropagation();
+      });
+
+     
+      document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+        
+              modal.classList.remove('flex');
+              modal.classList.add('hidden');
+          }
+      });
+  });
+</script>

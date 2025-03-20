@@ -1,0 +1,39 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  description: string;
+  image: string;
+  video: string;
+}
+
+const { title, description, image, video } = Astro.props;
+---
+
+<a 
+  class="parent-container group hover:scale-[105%] transition-transform duration-300 ease-in relative bg-cover bg-center h-[300px] cursor-pointer overflow-hidden"
+  data-project-title={title}
+  data-project-description={description}
+  data-project-image={image}
+  data-project-video={video || ""}
+>
+  <div 
+    class="container absolute bottom-0 left-0 w-full h-full bg-cover bg-center rounded-lg shadow-lg transition-all transform hover:translate-y-[-20px]"
+    style={`background-image: url(${image})`}
+  >
+    <div class="absolute inset-0 bg-black/20 dark:bg-black/40 rounded-lg"></div>
+
+    <!-- Title & Description -->
+    <div class="absolute bottom-5 left-5 px-5">
+      <h3 class="text-5xl font-bold text-white transition-colors">
+        {title}
+      </h3>
+    
+      <p class="text-white/80 dark:text-gray-300 md:text-base xxs:text-sm xs:text-xs opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        {description.slice(0, 60)}
+      </p>
+    </div>
+  </div>
+</a>
+
+

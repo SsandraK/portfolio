@@ -1,0 +1,34 @@
+# Build Output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Env
+.env
+.env.production
+.env.local
+.env.development
+.env.test
+
+
+.DS_Store
+
+.idea/
+
+.astro/
+
+docker-compose.override.yml
+docker-compose.dev.yml
+docker-compose.prod.yml
+Dockerfile
+.dockerignore
+
+.vscode/

@@ -1,0 +1,102 @@
+---
+import { projects } from "../assets/data";
+import { videos } from "../assets/data";
+import Layout from "../layouts/Layout.astro";
+
+const { id } = Astro.params;
+
+console.log("Current Route ID:", id);
+
+export function getStaticPaths() {
+  const paths = projects.map((project) => ({
+    params: { id: project.slug },
+  }));
+
+ // console.log("Generated Paths:", paths);
+  return paths;
+}
+
+const project = projects.find((p) => p.slug === id);
+
+if (!project) {
+  throw new Error(`Project not found: ${id}`);
+}
+
+const videoUrl = videos[id as keyof typeof videos] || null;
+const hasVideo = !!videoUrl;
+---
+
+
+
+<Layout title={`Project | ${project.title}`}>
+  <div class="container mx-auto p-6 mt-10 lg:mt-24 xl:mt-32 relative flex flex-col items-center text-center gap-12 lg:min-h-screen xs:h-auto backdrop-blur-lg bg-opacity-80 animate-fade-in">
+    
+    <div class="w-full max-w-4xl flex flex-col items-center text-center bg-gradient-to-b from-transparent to-gray-200 dark:to-gray-900 p-8 rounded-xl shadow-lg">
+
+    <div class="w-full flex justify-end">
+      <button 
+        onclick="history.back()" 
+        class="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-300 text-gray-800 font-semibold rounded-lg shadow-md transition-all duration-300 ease-in-out hover:scale-105">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg> 
+        Back
+      </button>
+    </div>
+
+      <!-- Image  -->
+      <div class="w-full flex justify-center mb-6">
+        <img 
+          src={project.image} 
+          alt={project.title} 
+          class="rounded-lg shadow-lg w-full max-w-[600px] h-auto aspect-[16/9] object-contain border border-gray-300 dark:border-gray-700"
+        />
+      </div>
+      
+      <!-- Text  -->
+      <div class="w-full flex flex-col justify-center items-center">
+        <h1 class="text-5xl md:text-4xl sm:text-3xl xs:text-2xl font-bold text-gray-900 dark:text-white leading-tight animate-fade-in">
+          {project.title}
+        </h1>
+        <p class="mt-4 text-xl md:text-lg sm:text-base xs:text-sm text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed animate-fade-in-up">
+          {project.description}
+        </p>
+      
+        <!-- Watch Video -->
+        {hasVideo && (
+          <button 
+            onclick="document.getElementById('videoContainer').classList.toggle('hidden')"
+            class="mt-6 flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition-transform duration-300 ease-in-out transform hover:scale-105">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18 7c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v10c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-3.333L22 17V7l-4 3.333V7zm-1.998 10H4V7h12l.001 4.999L16 12l.001.001.001 4.999z"></path>
+            </svg>
+            Watch Video
+          </button>
+        )}
+      </div>
+    </div>
+  </div>
+  
+  <!-- Video Modal -->
+  {hasVideo && (
+    <div 
+      id="videoContainer" 
+      class="hidden fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-md transition-opacity duration-300 ease-in-out z-50">
+      
+      <div class="relative w-full max-w-2xl p-6 bg-gray-100 dark:bg-gray-900 rounded-lg shadow-2xl transform scale-95 transition-transform duration-300 ease-in-out hover:scale-100 animate-fade-in">
+        
+        <button 
+          onclick="document.getElementById('videoContainer').classList.add('hidden')" 
+          class="absolute top-3 right-3 bg-gray-300 dark:bg-gray-700 hover:bg-gray-400 dark:hover:bg-gray-600 text-gray-900 dark:text-white font-semibold rounded-full p-2 shadow-md transition-all duration-300 ease-in-out hover:scale-110">
+          ✖
+        </button>
+
+        <video 
+          controls 
+          class="w-full rounded-lg shadow-lg object-contain max-h-[600px] transition-transform duration-500 ease-in-out transform scale-95 hover:scale-100"> 
+          <source src={videoUrl} type="video/mp4" />
+        </video>
+      </div>
+    </div>
+  )}
+</Layout>

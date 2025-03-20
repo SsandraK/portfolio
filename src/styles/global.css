@@ -1,0 +1,69 @@
+@tailwind utilities;
+@import "tailwindcss";
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); 
+
+
+@layer utilities {
+ 
+  :root {
+    --bg-color: #fff8f0;
+    --bg-gradient: linear-gradient(to bottom right, #fff8f0 30%, #f7e9e5 40%, #f3e0ee, #e6daeb, #f8f5f5);
+    --text-color: #2c2c2c;
+  }
+
+
+  [data-theme="dark"] {
+    --bg-color: #232526;
+    --bg-gradient: linear-gradient(to bottom right, #232526, #1b3a5a, #421e54, #270b3a, #090a0f);
+    --text-color: #d5d3d3;
+  }
+
+
+  body {
+    background: var(--bg-gradient);
+    background-color: var(--bg-color);
+    background-attachment: fixed;
+    color: var(--text-color);
+    transition: background 1s ease-in-out, color 0.5s ease-in-out;
+  }
+
+
+  .blurred-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-gradient);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(50px);
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  /* Hover Glow Effect */
+  .hover-glow {
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  .hover-glow:hover {
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Smooth Fade-in Animation */
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in-up 1.5s ease-out forwards;
+  }
+}
