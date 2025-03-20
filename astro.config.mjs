@@ -3,7 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import github from "@astrojs/github";
 
 export default defineConfig({
-  site: 'https://sandra.github.io', 
+  site: 'https://sandrakannik.github.io', 
   base: '/', 
   output: "static",
   adapter: github(),  
