@@ -1,6 +1,5 @@
 ---
 import '../styles/global.css';
-import '../assets/style.css';
 import Navbar from '../components/Navbar.astro';
 ---
 
@@ -11,7 +10,7 @@ import Navbar from '../components/Navbar.astro';
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="/src/assets/style.css" />
+		<link rel="stylesheet" href="/assets/style.css" />
 
 
 		<title>Portfolio</title>
@@ -38,7 +37,7 @@ import Navbar from '../components/Navbar.astro';
 		
 		</main>
 		<script src="../assets/index.js" is:inline></script>
-		<script src="../assets/sendEmail.js"></script>
+		<script src="/assets/sendEmail.js" is:inline></script>
 
 	</body>
 </html>
