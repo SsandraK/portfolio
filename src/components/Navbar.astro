@@ -4,34 +4,32 @@ import DarkMode from "./UI/darkMode.astro";
 const signature = "/assets/signature.png";
 ---
 
-<nav class="bg-white dark:bg-black shadow-lg fixed top-0 left-0 w-full z-50 py-3">
+<nav class="bg-white dark:bg-black shadow-lg fixed top-0 left-0 w-full z-50 py-5">
   <div class="max-w-6xl mx-auto px-5 flex justify-between items-center">
-	  
-	  <a href="/" class="flex items-center gap-3 text-xl font-bold text-gray-900 dark:text-white">
-		<img src={signature} alt="Signature" class="h-10 sm:h-14 md:h-16 w-auto dark:invert" />
-	  </a>
+    
+    <a href="/" class="flex items-center gap-12 text-xl font-bold text-gray-900 dark:text-white">
+      <img src={signature} alt="Signature" class="h-10 sm:h-14 md:h-16 w-auto dark:invert" />
+    </a>
 
-    <ul class="hidden md:flex gap-15 text-lg font-semibold text-gray-700 dark:text-gray-300">
+    <ul class="hidden md:flex space-x-12 text-lg font-semibold text-gray-700 dark:text-gray-300">
       <li class="hover:text-blue-500 transition-colors duration-300"> 
         <a href="#aboutme">About</a>
       </li>
-      <li class="border-l border-gray-400 pl-6 hover:text-blue-500 transition-colors duration-300"> 
+      <li class="border-l border-gray-400 pl-8 hover:text-blue-500 transition-colors duration-300"> 
         <a href="#projects">Projects</a>
       </li>
-      <li class="border-l border-gray-400 pl-6 hover:text-blue-500 transition-colors duration-300"> 
+      <li class="border-l border-gray-400 pl-8 hover:text-blue-500 transition-colors duration-300"> 
         <a href="#skills">Skills</a>
       </li>
-      <li class="border-l border-gray-400 pl-6 hover:text-blue-500 transition-colors duration-300"> 
+      <li class="border-l border-gray-400 pl-8 hover:text-blue-500 transition-colors duration-300"> 
         <a href="#contact">Contact</a>
       </li>
     </ul>
-      
-    
-      <div class="flex items-center gap-5">
-        <DarkMode />
-      </div>
-  
+
+    <div class="flex items-center gap-5">
+      <DarkMode />
     </div>
-	
-  </nav>
-  
+
+  </div>
+</nav>
+

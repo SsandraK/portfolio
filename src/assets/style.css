@@ -148,7 +148,7 @@
     animation: floaty 5s ease-in-out infinite;
   }
   
-  /* 📱 Mobile Optimizations */
+  /* for mobile  */
   @media (max-width: 768px) {
     .animate-text-reveal {
       font-size: 4xl;

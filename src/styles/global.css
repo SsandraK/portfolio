@@ -1,23 +1,23 @@
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
-@import "tailwindcss";
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); 
-
 
 @layer utilities {
- 
+  
+  /* Custom Dark Mode Variant */
+  @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *)); 
+
   :root {
     --bg-color: #fff8f0;
     --bg-gradient: linear-gradient(to bottom right, #fff8f0 30%, #f7e9e5 40%, #f3e0ee, #e6daeb, #f8f5f5);
     --text-color: #2c2c2c;
   }
 
-
   [data-theme="dark"] {
     --bg-color: #232526;
     --bg-gradient: linear-gradient(to bottom right, #232526, #1b3a5a, #421e54, #270b3a, #090a0f);
     --text-color: #d5d3d3;
   }
-
 
   body {
     background: var(--bg-gradient);
@@ -26,7 +26,6 @@
     color: var(--text-color);
     transition: background 1s ease-in-out, color 0.5s ease-in-out;
   }
-
 
   .blurred-bg {
     position: fixed;
