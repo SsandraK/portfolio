@@ -37,9 +37,11 @@
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    -webkit-filter: blur(50px);
     filter: blur(50px);
     z-index: -1;
     opacity: 0.6;
+    transform: translateZ(0);
   }
 
   /* Hover Glow Effect */
@@ -63,6 +65,7 @@
   }
 
   .animate-fade-in {
-    animation: fade-in-up 1.5s ease-out forwards;
+    -webkit-animation: fade-in-up 1.5s ease-out forwards;
+  animation: fade-in-up 1.5s ease-out forwards;
   }
 }
