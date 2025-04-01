@@ -7,7 +7,7 @@ window.addEventListener("load", () => {
     const subject = encodeURIComponent("Message from Portfolio");
     const email = "solovjov.sandra@gmail.com"; 
 
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:${email}?subject=${subject}`;
   });
 });
 
