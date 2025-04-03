@@ -19,63 +19,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const singingContent = `🎵 Since coding improves my brain and tennis strengthens my body, I wanted something for my soul as well. So last year, I joined the <strong>Põlva Mixed Choir</strong> - Põlva Segakoor.`;
 
+    
     aboutMeSection.addEventListener('click', () => {
         aboutInfo.innerHTML = `
-        <div class="text-gray-700 dark:text-white text-lg max-w-3xl text-center md:text-left leading-relaxed">
-          <p>${aboutMeContent}</p>
-        </div>
-        
-        <div class="flex flex-col md:flex-row items-center gap-6 mt-10">
-            <img src="/images/me.png" alt="Me" class="w-[250px] h-[300px] sm:w-[350px] sm:h-[450px] lg:w-[450px] lg:h-[500px] xl:w-[500px] xl:h-[550px] rounded-lg shadow-lg border-4 border-orange-300 transition-transform duration-300 hover:scale-110">
-            <p class="text-gray-700 dark:text-white text-lg max-w-lg">${aboutMeContent}</p>
-        </div>
-        
-        <div class="flex flex-col md:flex-row-reverse items-center gap-6 mt-6">
-            <img src="/images/travel1.png" alt="Books" class="w-[250px] h-[300px] sm:w-[350px] sm:h-[450px] lg:w-[450px] lg:h-[500px] xl:w-[500px] xl:h-[550px] rounded-lg shadow-lg border-4 border-orange-300 transition-transform duration-300 hover:scale-110">
-            <p class="text-gray-700 dark:text-white text-lg max-w-lg">${freeTimeContent}</p>
-        </div>
-        
-        <div class="flex flex-col md:flex-row items-center gap-6 mt-6">
-            <img src="/images/group_tennis.jpeg" alt="Tennis" class="w-[400px] sm:w-[450px] lg:w-[500px] xl:w-[550px] rounded-lg shadow-lg border-4 border-orange-300 object-cover transition-transform duration-300 hover:scale-110">
-            <p class="text-gray-700 dark:text-white text-lg max-w-lg">${tennisContent}</p>
-        </div>
-        
-        <div class="flex flex-col md:flex-row-reverse items-center gap-6 mt-6">
-            <img src="/images/singing.png" alt="Singing" class="w-[400px] sm:w-[450px] lg:w-[500px] xl:w-[550px] rounded-lg shadow-lg border-4 border-orange-300 object-cover transition-transform duration-300 hover:scale-110">
-            <p class="text-gray-700 dark:text-white text-lg max-w-lg">${singingContent}</p>
-        </div>
-        `;
-        
-        aboutMeModal.classList.remove('hidden', 'opacity-0');
-        aboutMeModal.classList.add('flex', 'opacity-100');
-        document.body.style.overflow = 'hidden';
-     
+          <!-- Intro -->
+          <div class="text-gray-700 dark:text-white text-lg max-w-4xl text-center md:text-left leading-relaxed px-4 sm:px-0">
+            <p>${aboutMeContent}</p>
+          </div>
+    
+          <!-- About Me -->
+          <div class="flex flex-col md:flex-row items-center gap-6 mt-12 px-4 sm:px-0">
+            <img src="/images/me.png" alt="Me" class="w-auto max-w-[350px] sm:max-w-[400px] rounded-xl shadow-xl border-4 border-orange-300 transition-transform duration-300 hover:scale-105">
+            <div class="text-gray-700 dark:text-white text-lg text-center md:text-left w-full max-w-2xl leading-relaxed">
+              ${aboutMeContent}
+            </div>
+          </div>
+    
+          <!-- Free Time -->
+          <div class="flex flex-col md:flex-row-reverse items-center gap-6 mt-12 px-4 sm:px-0">
+            <img src="/images/travel1.png" alt="Books" 
+           class="w-auto max-w-[400px] sm:max-w-[400px] rounded-xl shadow-xl border-4 border-orange-300 transition-transform duration-300 hover:scale-110">
+            <div class="text-gray-700 dark:text-white text-lg text-center md:text-left w-full max-w-2xl leading-relaxed">
+              ${freeTimeContent}
+            </div>
+          </div>
+    
+<div class="flex flex-col md:flex-row items-center gap-8 mt-12 px-4 sm:px-0">
+  <img src="/images/group_tennis.jpeg" alt="Tennis" 
+   class="w-auto max-w-[350px] sm:max-w-[400px] rounded-xl shadow-xl border-4 border-orange-300 transition-transform duration-300 hover:scale-110">
+  <div class="flex-1 text-gray-700 dark:text-white text-base sm:text-lg text-center md:text-left leading-relaxed">
+    ${tennisContent}
+  </div>
+</div>
+
+<!-- Singing -->
+<div class="flex flex-col md:flex-row-reverse items-center md:items-start gap-6 mt-12 px-4 sm:px-0">
+  <img src="/images/singing.png" alt="Singing" 
+   class="w-auto max-w-[350px] sm:max-w-[400px] rounded-xl shadow-xl border-4 border-orange-300 transition-transform duration-300 hover:scale-110">
+  <div class="flex-1 text-gray-700 dark:text-white text-base sm:text-lg text-center md:text-left leading-relaxed">
+    ${singingContent}
+  </div>
+</div>
+  `;
+    
+        aboutMeModal.classList.remove('hidden');
         setTimeout(() => {
-            aboutMeModal.scrollTo({ top: 0, behavior: 'auto' });
-        }, 0);
+          aboutMeModal.classList.add('flex', 'opacity-100');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    
 
+        setTimeout(() => {
+          aboutMeModal.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 50);
+      });
+    
 
-    });
-
-    aboutMeModal.addEventListener('click', (event) => {
+      aboutMeModal.addEventListener('click', (event) => {
         if (event.target === aboutMeModal) {
-            closeAboutMeModal();
+          closeAboutMeModal();
         }
-    });
-
-    document.addEventListener('keydown', (event) => {
+      });
+    
+      document.addEventListener('keydown', (event) => {
         if (event.key === "Escape") {
-            closeAboutMeModal();
+          closeAboutMeModal();
         }
-    });
-
-    function closeAboutMeModal() {
+      });
+    
+      function closeAboutMeModal() {
         aboutMeModal.classList.remove('opacity-100');
         aboutMeModal.classList.add('opacity-0');
+    
         setTimeout(() => {
-            aboutMeModal.classList.remove('flex');
-            aboutMeModal.classList.add('hidden');
-            document.body.style.overflow = '';
+          aboutMeModal.classList.remove('flex');
+          aboutMeModal.classList.add('hidden');
+          document.body.style.overflow = '';
         }, 300);
-    }
-});
+      }
+    });
+    
